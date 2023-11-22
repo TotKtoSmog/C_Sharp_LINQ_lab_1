@@ -1,10 +1,13 @@
-﻿namespace C_Sharp_LINQ_lab_1
+﻿using System;
+
+namespace C_Sharp_LINQ_lab_1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Task1();
+            //Task1();
+            Task2(3, new int[] { 10, 20, 32, 30, 40 });
         }
 
         /// <summary>
@@ -28,6 +31,26 @@
             Console.WriteLine($"({res})");
             Console.WriteLine($"Первый положительный: {firstPositive}");
             Console.WriteLine($"Последний негативный: {lastNegative}");
+        }
+
+        /// <summary>
+        /// Даны цифра D (однозначное целое число) и целочисленная последовательность
+        /// A.Вывести первый положительный элемент последовательности A, оканчивающийся
+        /// цифрой D.Если требуемых элементов в последовательности A нет, то вывести 0
+        /// </summary>
+        private static void Task2(int D, int[]A)
+        {
+            
+            int Result = A.Where(n => n % 10 == D).FirstOrDefault(0);
+
+            string sRes = "";
+            foreach (int item in A)
+                sRes += $"{item}, ";
+            sRes = sRes.Remove(sRes.Length - 2);
+
+            Console.WriteLine($"Число D : {D}");
+            Console.WriteLine($"Последовательность: {sRes}");
+            Console.WriteLine($"Результат: {Result}");
         }
     }
 }
