@@ -7,7 +7,8 @@ namespace C_Sharp_LINQ_lab_1
         static void Main(string[] args)
         {
             //Task1();
-            Task2(3, new int[] { 10, 20, 32, 30, 40 });
+            //Task2(3, new int[] { 10, 20, 32, 30, 40 });
+            Task3(2, new string[] { "aa", "212", "a2", "a21", "123a" });
         }
 
         /// <summary>
@@ -52,5 +53,14 @@ namespace C_Sharp_LINQ_lab_1
             Console.WriteLine($"Последовательность: {sRes}");
             Console.WriteLine($"Результат: {Result}");
         }
+        /// <summary>
+        /// Даны целое число L (> 0) и строковая последовательность A. Вывести
+        /// последнюю строку из A, начинающуюся с цифры и имеющую длину L.Если требуемых
+        /// строк в последовательности A нет, то вывести строку «Not found».
+        /// </summary>
+        /// <param name="L">Целое число для фильтрации строк.</param>
+        /// <param name="A">Строковая последовательность.</param>
+        private static void Task3(int L, string[] A)
+            => Console.WriteLine(A.Where(n => Char.IsDigit(n.First()) && n.Length == L).LastOrDefault("Not found"));
     }
 }
