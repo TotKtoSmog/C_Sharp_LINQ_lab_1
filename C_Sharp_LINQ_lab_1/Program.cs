@@ -9,7 +9,8 @@ namespace C_Sharp_LINQ_lab_1
             //Task1();
             //Task2(3, new int[] { 10, 20, 32, 30, 40 });
             //Task3(2, new string[] { "aa", "212", "a2", "a21", "123a" });
-            Task4('C', new string[] { "cc", "cC", "aC" });
+            //Task4('C', new string[] { "cc", "cC", "aC" });
+            Task5('C', new string[] { "cc", "cC", "aC", "CC" });
         }
 
         /// <summary>
@@ -74,6 +75,15 @@ namespace C_Sharp_LINQ_lab_1
         private static void Task4(char C, string[] A)
             => Console.WriteLine(A.Where(n => n.Last() == C).Count() > 1 ? "Error":
                  A.Where(n => n.Last() == C).FirstOrDefault(""));
+        /// <summary>
+        /// Даны символ С и строковая последовательность A. Найти количество элементов
+        /// A, которые содержат более одного символа и при этом начинаются и оканчиваются
+        /// символом C.
+        /// </summary>
+        /// <param name="C">Символ для фильтрации.</param>
+        /// <param name="A">Строковая последовательность.</param>
+        private static void Task5(char C, string[] A)
+            => Console.WriteLine(A.Where(n => n.Length > 1 && n.First() == C && n.Last() == C).Count());
     
     }
 }
