@@ -8,7 +8,8 @@ namespace C_Sharp_LINQ_lab_1
         {
             //Task1();
             //Task2(3, new int[] { 10, 20, 32, 30, 40 });
-            Task3(2, new string[] { "aa", "212", "a2", "a21", "123a" });
+            //Task3(2, new string[] { "aa", "212", "a2", "a21", "123a" });
+            Task4('C', new string[] { "cc", "cC", "aC" });
         }
 
         /// <summary>
@@ -62,5 +63,17 @@ namespace C_Sharp_LINQ_lab_1
         /// <param name="A">Строковая последовательность.</param>
         private static void Task3(int L, string[] A)
             => Console.WriteLine(A.Where(n => Char.IsDigit(n.First()) && n.Length == L).LastOrDefault("Not found"));
+        /// <summary>
+        /// Даны символ С и строковая последовательность A. Если A содержит
+        /// единственный элемент, оканчивающийся символом C, то вывести этот элемент; если
+        /// требуемых строк в A нет, то вывести пустую строку; если требуемых строк 
+        /// больше одной, то вывести строку «Error»
+        /// </summary>
+        /// <param name="C">Символ для фильтрации.</param>
+        /// <param name="A">Строковая последовательность.</param>
+        private static void Task4(char C, string[] A)
+            => Console.WriteLine(A.Where(n => n.Last() == C).Count() > 1 ? "Error":
+                 A.Where(n => n.Last() == C).FirstOrDefault(""));
+    
     }
 }
