@@ -10,7 +10,8 @@ namespace C_Sharp_LINQ_lab_1
             //Task2(3, new int[] { 10, 20, 32, 30, 40 });
             //Task3(2, new string[] { "aa", "212", "a2", "a21", "123a" });
             //Task4('C', new string[] { "cc", "cC", "aC" });
-            Task5('C', new string[] { "cc", "cC", "aC", "CC" });
+            //Task5('C', new string[] { "cc", "cC", "aC", "CC" });
+            Task6(new int[] { 11, 10, 31, -4, 0 });
         }
 
         /// <summary>
@@ -84,6 +85,18 @@ namespace C_Sharp_LINQ_lab_1
         /// <param name="A">Строковая последовательность.</param>
         private static void Task5(char C, string[] A)
             => Console.WriteLine(A.Where(n => n.Length > 1 && n.First() == C && n.Last() == C).Count());
+        /// <summary>
+        /// Дана целочисленная последовательность. Найти количество ее 
+        /// положительных двузначных элементов, а также их среднее арифметическое(как
+        /// вещественное число). Если требуемые элементы отсутствуют, то дважды вывести 0 
+        /// (первый раз как целое, второй – как вещественное).
+        /// </summary>
+        /// <param name="A">Целочисленная последовательность</param>
+        private static void Task6(int[] A)
+        {
+            Console.WriteLine(A.Where(n => n > 9 && n < 99).Count());
+            Console.WriteLine(Math.Round(A.Where(n => n > 9 && n < 99).DefaultIfEmpty(0).Average(),3));
+        }
     
     }
 }
