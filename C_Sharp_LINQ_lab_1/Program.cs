@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace C_Sharp_LINQ_lab_1
@@ -17,7 +18,8 @@ namespace C_Sharp_LINQ_lab_1
             //Task8(new string[] { "CC", "AA1", "AA", "AB" });
             //Task9(3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
             //Task10(2, new string[] { "CC", "AA1", "AAA","cFA", "AA", "ABA" });
-            Task11(4, 3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
+            //Task11(4, 3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
+            Task12(3, new int[] { 4, 6, 3, 9, 2, 3, 2, 10, -7 });
         }
 
         /// <summary>
@@ -161,6 +163,21 @@ namespace C_Sharp_LINQ_lab_1
         private static void Task11(int K, int D, int[] A)
         {
             int[] result = A.TakeWhile(n => n < D).Union(A.Skip(K).ToArray()).OrderByDescending(n => n).ToArray();
+            foreach (int item in result)
+                Console.WriteLine(item);
+        }
+        /// <summary>
+        ///  Дано целое число K (> 0) и целочисленная последовательность A. Найти 
+        ///  теоретико-множественную разность двух фрагментов A: первый содержит все четные
+        ///  числа, а второй – все числа с порядковыми номерами, большими K.В полученной
+        ///  последовательности (не содержащей одинаковых элементов) поменять порядок элементов
+        ///  на обратный.
+        /// </summary>
+        /// <param name="K">Целое число (> 0).</param>
+        /// <param name="A">Целочисленная последовательность.</param>
+        private static void Task12(int K, int[] A)
+        {
+            int[] result = A.Where(n => n % 2 == 0).Except(A.Skip(K).ToArray()).Reverse().ToArray();
             foreach (int item in result)
                 Console.WriteLine(item);
         }
