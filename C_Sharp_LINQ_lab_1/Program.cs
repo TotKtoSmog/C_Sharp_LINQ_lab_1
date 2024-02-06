@@ -8,7 +8,7 @@ namespace C_Sharp_LINQ_lab_1
     {
         static void Main(string[] args)
         {
-            //Task1();
+            //Task1(new int[] { -1, 2, -13, 4, 5, 6, -17, 8, });
             //Task2(3, new int[] { 10, 20, 32, 30, 40 });
             //Task3(2, new string[] { "aa", "212", "a2", "a21", "123a" });
             //Task4('C', new string[] { "cc", "cC", "aC" });
@@ -19,7 +19,9 @@ namespace C_Sharp_LINQ_lab_1
             //Task9(3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
             //Task10(2, new string[] { "CC", "AA1", "AAA","cFA", "AA", "ABA" });
             //Task11(4, 3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
-            Task13(2, new string[] { "AA", "AA1", "AAA", "cF2", "AA", "ABA" });
+            //Task12(3, new int[] { 4, 6, 3, 9, 2, 3, 2, 10, -7 });
+            //Task13(2, new string[] { "AA", "AA1", "AAA", "cF2", "AA", "ABA" });
+            Task14(new string[] { "AA", "", "AAA", "CF", "AA", "ABA" });
         }
 
         /// <summary>
@@ -27,15 +29,13 @@ namespace C_Sharp_LINQ_lab_1
         /// так и отрицательные числа.Вывести ее первый положительный элемент и последний
         /// отрицательный элемент.
         /// </summary>
-        private static void Task1()
+        private static void Task1(int[] A)
         {
-            int[] array = { -1, 2, -13, 4, 5, 6, -17, 8, };
-
-            int firstPositive = array.Where(n => n > 0).First();
-            int lastNegative = array.Where(n => n < 0).Last();
+            int firstPositive = A.Where(n => n > 0).First();
+            int lastNegative = A.Where(n => n < 0).Last();
 
             string res = "";
-            foreach (int item in array)
+            foreach (int item in A)
                 res += $"{item}, ";
             res = res.Remove(res.Length-2);
 
@@ -195,6 +195,25 @@ namespace C_Sharp_LINQ_lab_1
         private static void Task13(int K, string[] A)
         {
             string[] result = A.Take(K).Intersect(A.Reverse().TakeWhile(n => !Char.IsDigit(n.Last())).ToArray()).ToArray();
+            foreach (string item in result)
+                Console.WriteLine(item);
+        }
+        /// <summary>
+        ///  Дана строковая последовательность A. Строки последовательности содержат 
+        ///  только заглавные буквы латинского алфавита.Получить новую последовательность строк,
+        ///  элементы которой определяются по соответствующим элементам A следующим образом: 
+        ///  пустые строки в новую последовательность не включаются, а к непустым приписывается
+        ///  порядковый номер данной строки в исходной последовательности(например, если пятый
+        ///  элемент A имеет вид «ABC», то в полученной последовательности он будет иметь вид 
+        ///  «ABC5»). При нумерации должны учитываться и пустые строки последовательности A.
+        ///  Отсортировать полученную последовательность в лексикографическом порядке по
+        ///  возрастанию
+        /// </summary>
+        /// <param name="A">Cтроковая последовательность.</param>
+        private static void Task14(string[] A)
+        {
+            int index = 0;
+            string[] result = A.Select(n => $"{n}{++index}").Where(n => !(char.IsNumber(n.First()) || char.IsWhiteSpace(n.First()))).ToArray();
             foreach (string item in result)
                 Console.WriteLine(item);
         }
