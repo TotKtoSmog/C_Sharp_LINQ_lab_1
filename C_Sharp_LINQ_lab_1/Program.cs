@@ -1,27 +1,41 @@
-﻿using System;
-using System.Linq;
-using System.Xml.Serialization;
-
-namespace C_Sharp_LINQ_lab_1
+﻿namespace C_Sharp_LINQ_lab_1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            //Task1(new int[] { -1, 2, -13, 4, 5, 6, -17, 8, });
-            //Task2(3, new int[] { 10, 20, 32, 30, 40 });
-            //Task3(2, new string[] { "aa", "212", "a2", "a21", "123a" });
-            //Task4('C', new string[] { "cc", "cC", "aC" });
-            //Task5('C', new string[] { "cc", "cC", "aC", "CC" });
-            //Task6(new int[] { 11, 10, 31, -4, 0 });
-            //Task7(2, new string[] { "CC", "AA1", "AA", "AB" });
-            //Task8(new string[] { "CC", "AA1", "AA", "AB" });
-            //Task9(3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
-            //Task10(2, new string[] { "CC", "AA1", "AAA","cFA", "AA", "ABA" });
-            //Task11(4, 3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
-            //Task12(3, new int[] { 4, 6, 3, 9, 2, 3, 2, 10, -7 });
-            //Task13(2, new string[] { "AA", "AA1", "AAA", "cF2", "AA", "ABA" });
-            Task14(new string[] { "AA", "", "AAA", "CF", "AA", "ABA" });
+            const int countTask = 14;
+            const string predicatTask = "Задание №";
+            bool start = true;
+            while (start)
+            {
+                Console.Clear();
+                Console.WriteLine("Выход №0");
+                for (int i = 1; i <= countTask; i++)
+                    Console.WriteLine(predicatTask + i);
+                string str = Console.ReadLine();
+                Console.Clear();
+                switch (str)
+                {
+                    case "0": start = false; break;
+                    case "1": Task1(new int[] { -1, 2, -13, 4, 5, 6, -17, 8, }); break;
+                    case "2": Task2(3, new int[] { 10, 20, 32, 30, 40 }); break;
+                    case "3": Task3(2, new string[] { "aa", "212", "a2", "a21", "123a" }); break;
+                    case "4": Task4('C', new string[] { "cc", "cC", "aC" }); break;
+                    case "5": Task5('C', new string[] { "cc", "cC", "aC", "CC" }); break;
+                    case "6": Task6(new int[] { 11, 10, 31, -4, 0 }); break;
+                    case "7": Task7(2, new string[] { "CC", "AA1", "AA", "AB" }); break;
+                    case "8": Task8(new string[] { "CC", "AA1", "AA", "AB" }); break;
+                    case "9": Task9(3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 }); break;
+                    case "10": Task10(2, new string[] { "CC", "AA1", "AAA", "cFA", "AA", "ABA" }); break;
+                    case "11": Task11(4, 3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 }); break;
+                    case "12": Task12(3, new int[] { 4, 6, 3, 9, 2, 3, 2, 10, -7 }); break;
+                    case "13": Task13(2, new string[] { "AA", "AA1", "AAA", "cF2", "AA", "ABA" }); break;
+                    case "14": Task14(new string[] { "AA", "", "AAA", "CF", "AA", "ABA" }); break;
+                }
+                Console.WriteLine("Нажмите Enter для продолжения");
+                Console.ReadLine(); 
+            }
         }
 
         /// <summary>
@@ -44,7 +58,6 @@ namespace C_Sharp_LINQ_lab_1
             Console.WriteLine($"Первый положительный: {firstPositive}");
             Console.WriteLine($"Последний негативный: {lastNegative}");
         }
-
         /// <summary>
         /// Даны цифра D (однозначное целое число) и целочисленная последовательность
         /// A.Вывести первый положительный элемент последовательности A, оканчивающийся
