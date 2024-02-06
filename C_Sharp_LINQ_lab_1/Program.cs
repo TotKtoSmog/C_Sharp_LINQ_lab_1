@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace C_Sharp_LINQ_lab_1
 {
@@ -12,7 +13,8 @@ namespace C_Sharp_LINQ_lab_1
             //Task4('C', new string[] { "cc", "cC", "aC" });
             //Task5('C', new string[] { "cc", "cC", "aC", "CC" });
             //Task6(new int[] { 11, 10, 31, -4, 0 });
-            Task7(2, new string[] { "CC1", "AA1", "AA1", "AB1" });
+            //Task7(2, new string[] { "CC", "AA1", "AA", "AB" });
+            Task8(new string[] { "CC", "AA1", "AA", "AB" });
         }
 
         /// <summary>
@@ -108,7 +110,17 @@ namespace C_Sharp_LINQ_lab_1
         /// <param name="L">Целое число L (> 0).</param>
         /// <param name="A">Строковая последовательность.</param>
         private static void Task7(int L, string[] A)
-            =>Console.WriteLine( A.Where(n => n.Length == L).OrderBy(n => n).LastOrDefault());
-    
+            => Console.WriteLine(A.Where(n => n.Length == L).OrderBy(n => n).LastOrDefault());
+        /// <summary>
+        ///  Дана строковая последовательность. Найти сумму длин всех строк, входящих в 
+        ///  данную последовательность.
+        /// </summary>
+        /// <param name="A">Строковая последовательность.</param>
+        private static void Task8(string[] A)
+        {
+            Console.WriteLine(A.Sum(n => n.Length));
+        }
+
+
     }
 }
