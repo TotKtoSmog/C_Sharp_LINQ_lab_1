@@ -11,7 +11,8 @@ namespace C_Sharp_LINQ_lab_1
             //Task3(2, new string[] { "aa", "212", "a2", "a21", "123a" });
             //Task4('C', new string[] { "cc", "cC", "aC" });
             //Task5('C', new string[] { "cc", "cC", "aC", "CC" });
-            Task6(new int[] { 11, 10, 31, -4, 0 });
+            //Task6(new int[] { 11, 10, 31, -4, 0 });
+            Task7(2, new string[] { "CC1", "AA1", "AA1", "AB1" });
         }
 
         /// <summary>
@@ -97,6 +98,17 @@ namespace C_Sharp_LINQ_lab_1
             Console.WriteLine(A.Where(n => n > 9 && n < 99).Count());
             Console.WriteLine(Math.Round(A.Where(n => n > 9 && n < 99).DefaultIfEmpty(0).Average(),3));
         }
+        /// <summary>
+        /// Даны целое число L (> 0) и строковая последовательность A. Строки 
+        /// последовательности A содержат только заглавные буквы латинского алфавита.Среди всех
+        /// строк из A, имеющих длину L, найти наибольшую (в смысле лексикографического
+        /// порядка). Вывести эту строку или пустую строку, если последовательность не содержит
+        /// строк длины L.
+        /// </summary>
+        /// <param name="L">Целое число L (> 0).</param>
+        /// <param name="A">Строковая последовательность.</param>
+        private static void Task7(int L, string[] A)
+            =>Console.WriteLine( A.Where(n => n.Length == L).OrderBy(n => n).LastOrDefault());
     
     }
 }
