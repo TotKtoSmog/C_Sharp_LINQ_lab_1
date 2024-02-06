@@ -15,7 +15,8 @@ namespace C_Sharp_LINQ_lab_1
             //Task6(new int[] { 11, 10, 31, -4, 0 });
             //Task7(2, new string[] { "CC", "AA1", "AA", "AB" });
             //Task8(new string[] { "CC", "AA1", "AA", "AB" });
-            Task9(99, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
+            //Task9(3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
+            Task10(2, new string[] { "CC", "AA1", "AAA","cFA", "AA", "ABA" });
         }
 
         /// <summary>
@@ -124,12 +125,18 @@ namespace C_Sharp_LINQ_lab_1
         ///  элемента A, большего D, извлечь из A все нечетные положительные числа, поменяв
         ///  порядок извлеченных чисел на обратный.
         /// </summary>
-        /// <param name="D"></param>
-        /// <param name="A"></param>
+        /// <param name="D">Целое число.</param>
+        /// <param name="A">Целочисленная последовательность.</param>
         private static void Task9(int D, int[] A)
         {
             int []result = A.SkipWhile(n => n < D).Where(n => n > 0 && n % 2 == 1).Reverse().ToArray();
             foreach(int item in result)
+                Console.WriteLine(item);
+        }
+        private static void Task10(int K, string[] A)
+        {
+            string[] result = A.Skip(K).Where(n => n.Length % 2 == 1 && Char.IsUpper(n.First())).Reverse().ToArray();
+            foreach (string item in result)
                 Console.WriteLine(item);
         }
     }
