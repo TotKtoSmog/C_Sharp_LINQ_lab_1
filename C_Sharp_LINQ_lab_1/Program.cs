@@ -14,7 +14,8 @@ namespace C_Sharp_LINQ_lab_1
             //Task5('C', new string[] { "cc", "cC", "aC", "CC" });
             //Task6(new int[] { 11, 10, 31, -4, 0 });
             //Task7(2, new string[] { "CC", "AA1", "AA", "AB" });
-            Task8(new string[] { "CC", "AA1", "AA", "AB" });
+            //Task8(new string[] { "CC", "AA1", "AA", "AB" });
+            Task9(99, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
         }
 
         /// <summary>
@@ -117,10 +118,19 @@ namespace C_Sharp_LINQ_lab_1
         /// </summary>
         /// <param name="A">Строковая последовательность.</param>
         private static void Task8(string[] A)
+            => Console.WriteLine(A.Sum(n => n.Length));
+        /// <summary>
+        ///  Даны целое число D и целочисленная последовательность A. Начиная с первого 
+        ///  элемента A, большего D, извлечь из A все нечетные положительные числа, поменяв
+        ///  порядок извлеченных чисел на обратный.
+        /// </summary>
+        /// <param name="D"></param>
+        /// <param name="A"></param>
+        private static void Task9(int D, int[] A)
         {
-            Console.WriteLine(A.Sum(n => n.Length));
+            int []result = A.SkipWhile(n => n < D).Where(n => n > 0 && n % 2 == 1).Reverse().ToArray();
+            foreach(int item in result)
+                Console.WriteLine(item);
         }
-
-
     }
 }
