@@ -19,7 +19,7 @@ namespace C_Sharp_LINQ_lab_1
             //Task9(3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
             //Task10(2, new string[] { "CC", "AA1", "AAA","cFA", "AA", "ABA" });
             //Task11(4, 3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
-            Task12(3, new int[] { 4, 6, 3, 9, 2, 3, 2, 10, -7 });
+            Task13(2, new string[] { "AA", "AA1", "AAA", "cF2", "AA", "ABA" });
         }
 
         /// <summary>
@@ -179,6 +179,23 @@ namespace C_Sharp_LINQ_lab_1
         {
             int[] result = A.Where(n => n % 2 == 0).Except(A.Skip(K).ToArray()).Reverse().ToArray();
             foreach (int item in result)
+                Console.WriteLine(item);
+        }
+        /// <summary>
+        ///  Даны целое число K (> 0) и последовательность непустых строк A. Строки 
+        ///  последовательности содержат только цифры и заглавные буквы латинского алфавита.
+        ///  Найти теоретико-множественное пересечение двух фрагментов A: первый содержит 3K
+        ///  начальных элементов, а второй – все элементы, расположенные после последнего
+        ///  элемента, оканчивающегося цифрой.Полученную последовательность (не содержащую
+        ///  одинаковых элементов) отсортировать по возрастанию длин строк, а строки одинаковой
+        ///  длины – в лексикографическом порядке по возрастанию.
+        /// </summary>
+        /// <param name="K"></param>
+        /// <param name="A"></param>
+        private static void Task13(int K, string[] A)
+        {
+            string[] result = A.Take(K).Intersect(A.Reverse().TakeWhile(n => !Char.IsDigit(n.Last())).ToArray()).ToArray();
+            foreach (string item in result)
                 Console.WriteLine(item);
         }
     }
