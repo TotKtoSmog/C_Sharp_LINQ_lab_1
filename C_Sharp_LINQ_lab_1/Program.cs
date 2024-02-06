@@ -16,7 +16,8 @@ namespace C_Sharp_LINQ_lab_1
             //Task7(2, new string[] { "CC", "AA1", "AA", "AB" });
             //Task8(new string[] { "CC", "AA1", "AA", "AB" });
             //Task9(3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
-            Task10(2, new string[] { "CC", "AA1", "AAA","cFA", "AA", "ABA" });
+            //Task10(2, new string[] { "CC", "AA1", "AAA","cFA", "AA", "ABA" });
+            Task11(4, 3, new int[] { 2, 1, 3, 2, 2, 1, 2, 5, -7 });
         }
 
         /// <summary>
@@ -133,10 +134,34 @@ namespace C_Sharp_LINQ_lab_1
             foreach(int item in result)
                 Console.WriteLine(item);
         }
+        /// <summary>
+        ///  Дано целое число K (> 0) и строковая последовательность A. Из элементов A,
+        ///  предшествующих элементу с порядковым номером K, извлечь те строки, которые имеют
+        ///  нечетную длину и начинаются с заглавной латинской буквы, изменив порядок следования
+        ///  извлеченных строк на обратный.
+        /// </summary>
+        /// <param name="K">Целое число (> 0).</param>
+        /// <param name="A">Строковая последовательность.</param>
         private static void Task10(int K, string[] A)
         {
             string[] result = A.Skip(K).Where(n => n.Length % 2 == 1 && Char.IsUpper(n.First())).Reverse().ToArray();
             foreach (string item in result)
+                Console.WriteLine(item);
+        }
+        /// <summary>
+        ///  Даны целые числа D и K (K > 0) и целочисленная последовательность A. Найти 
+        ///  теоретико-множественное объединение двух фрагментов A: первый содержит все
+        ///  элементы до первого элемента, большего D(не включая его), а второй – все элементы,
+        ///  начиная с элемента с порядковым номером K.Полученную последовательность (не
+        ///  содержащую одинаковых элементов) отсортировать по убыванию.
+        /// </summary>
+        /// <param name="K">Целые числа.</param>
+        /// <param name="D">Целые числа.</param>
+        /// <param name="A">Целочисленная последовательность.</param>
+        private static void Task11(int K, int D, int[] A)
+        {
+            int[] result = A.TakeWhile(n => n < D).Union(A.Skip(K).ToArray()).OrderByDescending(n => n).ToArray();
+            foreach (int item in result)
                 Console.WriteLine(item);
         }
     }
